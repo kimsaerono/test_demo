@@ -1,0 +1,137 @@
+/*对表格样式的优化
+*及本页面的一些样式
+*/
+body{
+    overflow: scroll;
+}
+
+.show-search-info-table {
+    min-height: 0px;
+    width: 100%;
+    font-size: 14px;
+}
+.show-search-info-table tr,.show-search-info-table tr td{
+    white-space: nowrap;
+}
+.show-search-info-tr>td {
+    padding: 25px 0 25px 0;
+    min-height: 80px;
+    border:1px solid #eee;
+    border-right: 0;
+    border-left: 0;
+    text-indent: 1em;
+    width: 164px;
+    white-space: nowrap;
+}
+
+.show-search-info-tr {
+    border-bottom: 1px solid #eee;
+}
+.show-search-info-tr td{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    max-width: 180px;
+}
+.show-search-info-tr td p {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.show-search-info-tr td p:nth-of-type(1){
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+}
+
+.show-info-table td{
+    width: 25%;
+}
+.module-title{
+    height: 52px;
+    line-height: 52px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+    background: #F9F9F9;;
+    text-indent: 1em;
+}
+.module-title td{
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #333333;
+}
+
+.form-child{
+    position: relative;
+    width: 100%;
+    padding:10px 0 10px 0;
+}
+.checkInfoTd {
+    position: relative;
+}
+.checkInfoTd .checkInfoList{
+    text-indent: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+    border-radius: 2px;
+    background: #FFFFFF;
+    position: absolute;
+    left: 13px;
+    display: none;
+    z-index: 1;
+}
+.checkInfoTd .checkInfoList p{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0;
+    padding: 4px 10px;
+}
+.checkInfoTd .checkInfoList p:nth-of-type(1) {
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0;
+    padding: 4px 10px;
+}
+.checkInfoTd .checkInfoList p:hover{
+    background: rgba(77,161,255,0.10);
+}
+.checkInfo,.freeze{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #4DA1FF;
+    letter-spacing: 0;
+}
+.overflow {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#startDate ,#endDate {
+    background-color: #fff;
+    font-size: 12px;
+    padding: 0;
+    padding-left: 4px;
+}
+#subMerchantModifyInfoBox 	.commonInfoContainer span:nth-of-type(1){
+    text-align: right;
+    color:#888;
+}
+.FormBtnBar{
+    float: right;
+    padding: 0;
+    padding-left: 112px;
+}
+.search-common-btn {
+    width: 45%;
+}
+.commonInfoUpper {
+    margin:35px 0 0 0;
+}
+.commonInfoUnder {
+    margin: 0 20px 0 0;
+}
+.ml18 {
+    margin-left: 18px;
+}

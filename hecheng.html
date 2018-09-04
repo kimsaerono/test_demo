@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Html5 Canvas 实现图片合成</title>
+<script src="jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="Canvas2Image.js" type="text/javascript" charset="utf-8"></script>
+<style>
+img{border:solid 1px #ddd;}
+</style>
+</head>
+
+<body>
+<div align="center" class="img_photo">
+    <img id="img1" src="3.png" width="300">
+    <img id="img2" src="2.jpg" width="300">
+</div>
+<input type="button" value="一键合成" onClick="draw()" style="display:block;width: 60px; margin: 0 auto;">
+<canvas id="canvas" width="300" height="300px" align="center"></canvas>
+<script>
+function draw(fn){
+    var data1= new Array();
+    for(var i=0;i<$('.img_photo img').length;i++){
+        data1[i]=$('.img_photo img').eq(i).attr('src');
+    }
+    var c=document.getElementById('canvas'),
+        ctx=c.getContext('2d'),
+        len=data1.length;
+    ctx.rect(0,0,300,300);
+    ctx.fillStyle='transparent';//画布填充颜色
+    ctx.fill();
+    var img=new Image;
+    img.src=data1[0];
+    img.onload=function(){
+        ctx.drawImage($("#img1")[0],0,0,300,300);
+    }
+    var img=new Image;
+    img.src=data1[1];
+    img.onload=function(){
+        ctx.drawImage($("#img2")[0],70,50,160,160);
+    }
+    //保存生成作品图片
+}
+
+
+
+</script>
+</body>
+</html>

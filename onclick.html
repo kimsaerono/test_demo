@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件委托</title>
+</head>
+<body>
+	<div class="grandFather">grandFather
+		<div class="father">father
+			<div class="son">son</div>
+			<div class="son">son</div>
+			<div class="son">son</div>
+			<div class="son">son</div>
+			<div class="son">son</div>
+			<div class="son">son</div>
+			<div class="son">son</div>
+		</div>
+	</div>
+</body>
+<script src="jquery-1.8.1.js"></script>
+<script>
+	$(".grandFather").on("click",".son",function(){
+		console.log($(this))
+	})
+</script>
+</html>

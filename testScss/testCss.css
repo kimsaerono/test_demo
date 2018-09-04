@@ -1,0 +1,6 @@
+@import './testLess.less';
+@import './testScss.scss';
+
+.p {
+	background : green;
+}

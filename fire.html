@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>火焰效果</title>
+        <style type="text/css">
+            body {
+                background-color:rgba(0,0,0,.5);
+            }
+            p {
+                color:white;
+                text-align:center;
+            }
+            #canvas {
+                display:block;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var vendors = ["", "ms", "moz", "webkit", "o"];
+            for (var i=0; i<vendors.length; i++) {
+                var key = vendors[i] + "RequestAnimationFrame";
+                if(window[key]) {
+                    console.log(key + "<br/>");
+                }
+                key = vendors[i] + "CancelAnimationFrame";
+                if(window[key]) {
+                    console.log(key + "<br/>");
+                }
+                key = vendors[i] + "CancelRequestAnimationFrame";
+                if(window[key]) {
+                    console.log(key + "<br/>");
+                }
+            }
+        </script>
+        <canvas id="canvas" width="100px" height="400px">您的浏览器不支持canvas</canvas>
+        <script type="text/javascript">
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+
+            //自动调整渲染间隔，来最佳匹配60fps。同时当标签不可见时暂停渲染
+            function setupRAF() {
+                window.requestAnimationFrame = (
+                    window.requestAnimationFrame        ||
+                    window.webkitRequestAnimationsFrame ||
+                    window.msRequestAnimationFrame      ||
+                    window.mozRequestAnimationFrame     ||
+                    window.oRequestAnimationFrame
+                );
+            }
+
+            //清除画布上的内容
+            function clearCanvas() {
+                ctx.globalCompositeOperation = "source-over";
+                ctx.clearRect(0, 0, c.width, c.height);
+            }
+
+            var CanvasController = function() {
+
+                //火焰粒子
+                var FireParticle = function(locationX, locationY, speedX, speedY) {
+                    this.location = {
+                        x: locationX,
+                        y: locationY,
+                    }
+                    //半径
+                    this.radius = .5 + Math.random() * 1;
+                    //颜色
+                    this.color = {
+                        r: 255,
+                        g: Math.round(Math.random() * 150),
+                        b: 0,
+                    }
+                    //速度
+                    this.speed = {
+                        x: (-1 + Math.random() * 2) + speedX,
+                        y: (Math.random() - 1) * speedY,
+                    };
+                    //生命总值
+                    this.healthPoint = 10 + Math.random() * 10;
+                    //当前生命值
+                    this.hp = this.healthPoint;
+
+                    //将各个颜色分量组成颜色值
+                    this.makeupColor = function(opacity) {
+                        return "rgba(" + this.color.r + "," + this.color.g + "," + this.color.b + "," + opacity + ")";
+                    }
+
+                    //更新
+                    this.update = function() {
+                        this.location.x += this.speed.x;
+                        this.location.y += this.speed.y;
+                        this.hp--;
+                        this.radius++;
+                    }
+
+                    //渲染
+                    this.render = function() {
+                        ctx.beginPath();
+                        var opacity = Math.round(this.hp / this.healthPoint * 100) / 100;
+                        var gradient = ctx.createRadialGradient(this.location.x, this.location.y, 0, this.location.x, this.location.y, this.radius);
+                        gradient.addColorStop(0, this.makeupColor(opacity));
+                        gradient.addColorStop(0.5, this.makeupColor(opacity));
+                        gradient.addColorStop(1, this.makeupColor(0));
+                        ctx.fillStyle = gradient;
+                        ctx.arc(this.location.x, this.location.y, this.radius, 0, 2 * Math.PI);
+                        ctx.fill();
+                    }
+                }
+
+                //火焰
+                var Fire = function(locationX, locationY, speedX, speedY) {
+                    var count = Math.round(30 * speedY);
+
+                    //火焰粒子数组
+                    var particles = [];
+                    for(var i=0; i<count; i++) {
+                        particles.push(new FireParticle(locationX, locationY, speedX, speedY));
+                    }
+
+                    //更新
+                    this.update = function() {
+                        for(var i=0; i < particles.length; i++) {
+                            particles[i].update();
+                            if(particles[i].hp < 0) {
+                                particles[i] = new FireParticle(locationX, locationY, speedX, speedY);
+                            }
+                        }
+                    }
+
+                    //渲染
+                    this.render = function() {
+                        ctx.globalCompositeOperation = "lighter";
+                        ctx.save();
+                        ctx.scale(1, 3);
+                        for(var i=0; i < particles.length; i++) {
+                            particles[i].render();
+                        }
+                        ctx.restore();
+                    }
+                }
+
+                //火焰群
+                var Fires = function(locationX, locationY) {
+                    var span = 15;
+                    var speedX = 0;
+                    var speedY = 5;
+                    var otherScaleY = 0.5;
+                    var leftFire = new Fire(locationX - span, locationY, speedX, speedY * otherScaleY);
+                    var middleFire = new Fire(locationX, locationY, speedX, speedY);
+                    var rightFire = new Fire(locationX + span, locationY, speedX, speedY * otherScaleY);
+
+                    //更新
+                    function update() {
+                        leftFire.update();
+                        middleFire.update();
+                        rightFire.update();
+                    }
+
+                    //渲染
+                    function render() {
+                        leftFire.render();
+                        middleFire.render();
+                        rightFire.render();
+                    }
+
+                    this.init = function() {
+                        function loop() {
+                            clearCanvas();
+                            update();
+                            render();
+                            requestAnimationFrame(loop);
+                        }
+                        loop();
+                    }
+                }
+
+                this.init = function() {
+                    var location = {
+                        x: c.width / 2,
+                        y: c.height / 6 + 35,
+                    };
+                    var fires = new Fires(location.x, location.y);
+                    setupRAF();
+                    fires.init();
+                }
+            }
+
+            new CanvasController().init();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,470 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>新建单据</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <!-- <link rel="stylesheet" href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/css/skins/_all-skins.min.css"> -->
+
+    <!-- YEEPAY -->
+    <!-- <link rel="stylesheet" href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/css/YEEPAY.css"> -->
+ 
+    <!-- jQuery 2.2.3 -->
+   <!--  <script src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/js/jquery-ui.min.js"></script>
+    <script src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/js/YEEPAY.js"></script> -->
+	<style type="text/css">
+		*{
+			padding-top: 0;
+			margin: 0;
+		}
+		
+		.containerSection {
+			width: 208px;
+			height:240px;
+			float: left;
+			margin-right: 20px;
+			margin-top: 47px;
+			
+		}
+		.containerDiv {
+			/*width: 168px;
+			height: 198px;*/
+			background: #FFFFFF;
+			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.20);
+			border-radius: 8px;
+			padding:20px;
+		}
+		.diviceType {
+			vertical-align: bottom;
+			border-bottom: 1px solid #E0E0E0;
+			padding-bottom: 10px;
+		}
+		.mis {
+			width: 168px;
+			height: 100px;
+			line-height: 100px;
+		}
+		.mis img{
+            width: 161px;
+            height: 100px;
+		    display: block;
+    		margin: auto;
+    		margin-top: 21px;
+		}
+
+		.qrcode {
+			height: 395px;
+		    width: 280px;
+		    display: none;
+		    position: absolute;
+		    border: 1px solid #000;
+		    padding-left: 20px;
+		    padding-right: 20px;
+		    padding-top: 20px;
+		    background: #FAFCFE;
+		    border: 1px solid #D5E2E9;
+		    border-radius: 4px;
+		}
+
+		.qrcodeDeviceNo {
+		    -webkit-text-size-adjust: none;
+		    position: relative;
+		    bottom: 109px;
+		    margin-left: 94px;
+		    font-size: 12px;
+		    -webkit-transform-origin-x: 0;
+		    -webkit-transform: scale(0.50);
+		}
+		.preverseQrcode {
+			background: #007BBC;
+			border-radius: 3px;
+			height: 34px;
+			line-height: 34px;
+			width: 120px;
+			text-align: center;
+			font-family: PingFangSC-Light;
+			font-size: 14px;
+			color: #FFFFFF;
+			letter-spacing: 0px;
+			margin: 0 auto;
+		}
+
+		.img_photo {
+			/*display: none*/
+		}
+        .clearFix {
+          content: " ";
+          display: block;
+          clear: both;
+          height: 0;
+        }
+        .clearFix {
+          zoom: 1;
+        }
+        .box {
+        	min-height: 800px!important;
+        	padding-left: 15px;
+        	background-color: #fff;
+        }
+	</style>
+</head>
+
+<body class="skin-blue sidebar-mini">
+    <div class="wrapper">
+        </script>
+        <link rel="Shortcut Icon" href="http://www.yeepay.com/favicon.ico">
+        <header class="main-header">
+            <a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/home/overview" class="logo">
+		        <span class="logo-mini"><b>联合</b>收单</span>
+		        <span class="logo-lg"><b>联合收单</b></span>
+		      
+		    </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+		       	 <span class="sr-only">Toggle navigation</span>
+		      	</a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				              <img src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/img/home/small-user.png" class="user-image" alt="User Image">
+				              
+				                <span class="hidden-xs">建行北京分行</span>
+				              
+				              
+				            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header">
+                                    <img src="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/dist/img/home/large-user.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        1020006admin
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/security/to_modify" class="btn btn-default btn-flat">修改密码</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/login/logout" class="btn btn-default btn-flat">退出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar" style="height: auto;">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-home-h" style="width:16px;height:16px"></i>
+                    <span>首页</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/home/overview"><i class="fa fa-circle-o"></i>交易信息概览</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-mendian" style="width:16px;height:16px"></i>
+                    <span>分支机构管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/branch/addPre"><i class="fa fa-circle-o"></i>创建分支机构</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/branch/listSubBank"><i class="fa fa-circle-o"></i>支行查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/branch/list"><i class="fa fa-circle-o"></i>网点查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-mendian" style="width:16px;height:16px"></i>
+                    <span>渠道产品管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/channelProductManage/list"><i class="fa fa-circle-o"></i>渠道产品列表管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-merchant" style="width:16px;height:16px"></i>
+                    <span>代理商管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/agent/checklist"><i class="fa fa-circle-o"></i>代理商入网审核</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/agent/list"><i class="fa fa-circle-o"></i>代理商管理列表</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/merchant/subMerchantList"><i class="fa fa-circle-o"></i>代理商子商户查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/agent/addPre"><i class="fa fa-circle-o"></i>添加下级代理商</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-merchant" style="width:16px;height:16px"></i>
+                    <span>商户管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/merchant/checklist"><i class="fa fa-circle-o"></i>商户入网审核</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/merchant/list"><i class="fa fa-circle-o"></i>商户管理列表</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/merchant/addPre"><i class="fa fa-circle-o"></i>添加下级商户</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/merchant/manage/device"><i class="fa fa-circle-o"></i>出机单查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-trade" style="width:16px;height:16px"></i>
+                    <span>交易管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/trade/trade"><i class="fa fa-circle-o"></i>交易查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/trade/refund"><i class="fa fa-circle-o"></i>退款查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-trade" style="width:16px;height:16px"></i>
+                    <span>结算管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/settle/settleList"><i class="fa fa-circle-o"></i>结算记录查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/remitDetail/query"><i class="fa fa-circle-o"></i>打款记录查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/remit/query"><i class="fa fa-circle-o"></i>每日打款处理</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/remitDetail/fail/query"><i class="fa fa-circle-o"></i>打款失败处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-trade" style="width:16px;height:16px"></i>
+                    <span>账务管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/accounting/report/queryFee"><i class="fa fa-circle-o"></i>手续费</a></li>
+                        </ul>
+                    </li>
+                    <li class="active treeview">
+                        <a href="#">
+                    <i class="fa fa-system" style="width:16px;height:16px"></i>
+                    <span>申请管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/op/opIndex"><i class="fa fa-circle-o"></i>业务申请</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/op/opList"><i class="fa fa-circle-o"></i>申请查询</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/yqt/op/auditOpList"><i class="fa fa-circle-o"></i>单据审核</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                    <i class="fa fa-system" style="width:16px;height:16px"></i>
+                    <span>系统管理</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/system/queryOperator"><i class="fa fa-circle-o"></i>操作员管理</a></li>
+                            <li><a href="/Users/payplus/Desktop/workspace/模板/v1.3.6_yqt-portal-app/src/main/webapp/app/security/to_modify"><i class="fa fa-circle-o"></i>修改登录密码</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar <-->	</-->
+        </aside>
+        <div class="content-wrapper">
+
+            <!-- 正式内容由此开始 -->
+        	<div class="process-tips">
+	            <p class="process-tips-context">账户管理 > 设备信息</p>
+	        </div>
+            <div class="clearFix"></div>
+        	<div class="box box-info">
+				<section class="containerSection">
+					<div class="containerDiv">
+						<p class="diviceType">POS</p><!--动态变化-->
+						<div class="mis">
+							<img src="img/1.jpg"><!--动态变化-->
+						</div>
+						<p>设备编号</p>
+						 <p>34567213123123123</p><!--动态变化 -->
+					</div>
+				</section>
+                <section class="containerSection">
+                    <div class="containerDiv">
+                        <p class="diviceType">POS</p><!--动态变化-->
+                        <div class="mis">
+                            <img src="img/2.jpg"><!--动态变化-->
+                        </div>
+                        <p>设备编号</p>
+                        <p>345612312312317</p><!--动态变化 -->
+                    </div>
+                </section>
+                <section class="containerSection">
+                    <div class="containerDiv">
+                        <p class="diviceType">MIS</p><!--动态变化-->
+                        <div class="mis">
+                            <img src="img/3.jpg"><!--动态变化-->
+                        </div>
+                        <p>设备编号</p>
+                        <p>345123123123123167</p><!--动态变化 -->
+                    </div>
+                </section>
+			</div>
+			<!-- 图片合成 -->
+			<div align="center" class="img_photo">
+			    <img id="img1" src="">
+			    <div style="text-align: center;" id="qrPic"></div>
+			    <input type="hidden" id="codeUrl" name="codeUrl" value="jebchjebch" />
+			</div>
+
+		      <!-- 二维码下载框 -->
+			<div class="qrcode">
+				<canvas id="canvasFinal" width="240" height="320" align="center"></canvas>
+				<div class="qrcodeDeviceNo">(ccb111111111111111)</div>
+				<div class="preverseQrcode">保存下载</div>
+			</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="jquery-1.8.1.js"></script>
+<script src="jquery.qCode.min.js"></script>
+<script type="text/javascript">
+    function toUtf8(str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for (i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            } else {
+                out += String.fromCcodeharCode(0xC0 | ((c >> 6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            }
+        }
+        return out;
+    };
+
+    //生成二维码代码
+    function qr() {
+        $("#qrPic").empty();
+        var str = toUtf8($("#codeUrl").val());//接受后端传来的数据
+        $("#qrPic").qrcode({
+            render: "canvas",
+            width: 270,
+            height: 270,
+            text: str
+        });
+
+        // 在qrPic里面渲染成二维码
+        $("canvas").eq(0).attr("id", "erw");
+        var canvas = document.getElementById('erw');
+        var context = canvas.getContext('2d');
+        var strDataURI = canvas.toDataURL();
+
+
+        // 将生成的二维码unicode赋值给img
+        document.getElementById('img1').src = strDataURI;
+        console.log(strDataURI);//可以得到url
+    };
+
+	$(".containerSection").each(function(){
+		$(this).mousemove(draw);
+	});
+	$(".containerSection").each(function(){
+		$(this).mouseleave(function(){
+			$(".qrcode").css("display","none");
+		});
+		$(".qrcode").mouseleave(function(){
+			$(".qrcode").css("display","none");
+		})
+	});
+	$(".qrcode").mousemove(function(){
+		$(this).css("display","block");
+	});
+	$(".qrcode").mouseout(function(){
+		$(document).mousedown(function(e){ 
+			e = window.event || e; // 兼容IE7
+			obj = $(e.target);
+			console.log(obj[0].id)
+			if(obj[0].id == "canvasFinal"){
+				$(this).css("display","none");
+				console.log(typeof obj[0].id);
+			};
+		});
+	});
+	function draw(fn){
+        qr();
+		var qrcodeTop =  parseFloat($(this)[0].offsetTop);
+		var qrcodeLeft = parseFloat($(this)[0].offsetLeft);
+		$(".qrcode").css("display","block");
+		$(".qrcode").css("top",qrcodeTop+170+"px");
+		$(".qrcode").css("left",qrcodeLeft+70+"px");
+
+	    var data1= new Array();
+	    for(var i=0;i<$('.img_photo img').length;i++){
+	        data1[i]=$('.img_photo img').eq(i).attr('src');
+            console.log(data1)
+	    }
+	    var c=document.getElementById('canvasFinal'),
+			ctx=c.getContext('2d'),
+	        len=data1.length;
+	    ctx.rect(0,0,300,300);
+	    ctx.fillStyle='transparent';//画布填充颜色
+	    ctx.fill();
+	  
+	    var img=new Image;
+	    // img.setAttribute('crossOrigin', 'anonymous');
+	    img.src=data1[0];
+	    img.onload=function(){
+	        ctx.drawImage($("#img1")[0],68,88,105,105);
+	    }
+	    //保存生成作品图片
+	}
+
+	//有跨域问题
+	setTimeout(function(){
+		var canvas = document.getElementById('canvasFinal');
+		var a = canvas.toDataURL();
+	},1000)
+</script>
+
+</html>

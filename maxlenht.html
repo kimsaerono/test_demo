@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="text">
+</body>
+<script type="text/javascript" src="jquery-1.8.1.js"></script>
+
+<script>
+	var reg = /"^\\W*(?![^a-zA-Z]+$)(?!\\D+$)(?![^_]+$)\\w*$"/
+	var a = $('input[name="text"]')
+	a.on("keyup",function(){
+		console.log(reg.test(a.val()))
+	})
+</script>
+</html>

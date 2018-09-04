@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		li {
+			list-style: none
+		}
+		.collectRecordBox {
+			width: 400px;
+			height: 300px;
+			font-family: PingFangSC-Light;
+			font-size: 14px;
+			color: #323232;
+			letter-spacing: 0px;
+			background: #FFFFFF;
+			box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.20);
+			border-radius: 3px;
+			position: fixed;
+			top: 35%;
+			left: 40%;
+		}
+		.collectRecordTitle {
+			font-family: PingFangSC-Light;
+
+			height: 55px;
+			line-height: 55px;
+			border: 1px solid #F4F4F4;
+		}
+		.collectRecordTitleTip {
+			padding-left: 30px
+		}
+		.closeButton {
+			font-size: 9px;
+			position: absolute;
+			right: 30px;
+		}
+		.module {
+			width: 320px;
+			height: 120px;
+			background: rgba(0,123,188,0.02);
+			border: 1px solid rgba(0,123,188,0.30);
+		}
+		.collectRecordContext {
+			margin-top: 30px;
+			margin-left: 40px;
+		}
+
+		.sureCollect{
+			width:120px;
+			height: 34px;
+			line-height: 34px;
+			text-align: center;
+			font-family: PingFangSC-Regular;
+			font-size: 14px;	
+			color: #FFFFFF;
+			letter-spacing: 2px;
+			background: #005BAB;
+			border-radius: 2px;
+			position: absolute;
+			bottom: 30px;
+			right: 30px;
+		}
+		.pic-module{
+		    width:320px;
+		    height:120px;
+		}
+		.pic-module-child{
+		    overflow: hidden;
+		}
+		.add-upload-photo {
+		    cursor: pointer;
+		    position: relative;
+		}
+		.upload-photo {
+		    position: relative;
+		}
+
+		.upload-block p.validation-error {
+		    height: 22px;
+		}
+
+		.upload-photo-name{
+		    height: 40px;
+		    margin-top: 40px;
+		    text-align: center;
+		    overflow: hidden;
+		}
+		.upload-photo-name span{
+		    color: #ccc;
+		}
+		.upload-photo-name p{
+		    font-size: 12px;
+		    color: #909090;
+		}
+
+		.upload-file-input {
+		    width: 320px;
+		    height: 120px;
+		    position: absolute;
+		    opacity: 0;
+		    cursor: pointer;
+		    z-index: 999;
+		    top: -41px;
+		}
+
+		.upload-file-show {
+		    width: 320px;
+		    height: 120px;
+		    position: absolute;
+		    top: -40px;
+		    z-index: 10001;
+		    cursor: pointer;
+		}
+		.delete-image-btn {
+			background-color: #000;
+		    position: absolute;
+		    top: 40px;
+		    right: 10px;
+		    z-index: 10001;
+		    width: 10px;
+		    height: 10px;
+		    background: url("../../../dist/images/delete-img.png") no-repeat;
+		    cursor: pointer;
+		}
+
+
+		.change-image-btn {
+			background-color: #000;
+		    position: absolute;
+		    top: 40px;
+		    right: 25px;
+		    z-index: 10001;
+		    width: 10px;
+		    height: 10px;
+		    background: url("../../../dist/images/edit.png") no-repeat;
+		    cursor: pointer;
+		}
+		@font-face {font-family: "iconfont";
+		    src: url('font_icon/iconfont.eot?t=1499420875704'); /* IE9*/
+		    src: url('font_icon/iconfont.eot?t=1499420875704font_icon#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		    url('font_icon/iconfont.woff?t=1499420875704') format('woff'), /* chrome, firefox */
+		    url('font_icon/iconfont.ttf?t=1499420875704') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+		    url('font_icon/iconfont.svg?t=1499420875704#iconfont') format('svg'); /* iOS 4.1- */
+		}
+
+		.iconfont {
+		    font-family:"iconfont" !important;
+		    font-size:16px;
+		    font-style:normal;
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+		}
+		.icon-tianjiatupian:before { content: "\e60a"; }
+	</style>
+</head>
+<body>
+	<div class="collectRecordBox">
+		<p class="collectRecordTitle"><span class="collectRecordTitleTip">确认收款</span><span class="closeButton">X</span></p>
+		<div class="collectRecordContext">
+			<div class="module">
+				<div class="pic-module">
+					<div class="pic-module-child">
+						<li class="upload-photo" file-type="">
+							<div class="upload-block">
+								<div class="upload-photo-name">
+									<span class="iconfont icon-tianjiatupian"></span>
+									<p>凭证</p>
+								</div>
+							</div>
+						</li>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="sureCollect">确认收款</div>
+	</div>
+	
+	
+</body>
+
+<script type="text/javascript">
+	var initData = {};
+	initData.qualification = {};
+    // initData.qualification.BUSSINESS_LICENSE = '${fn:replace(qualificationModelDTO.imgBusinessLicense, "\\", '/')}';
+    // initData.qualification.ORGANIZATION_CODE = '${fn:replace(qualificationModelDTO.imgOrganizationCode, "\\", '/')}';
+    // initData.qualification.TAX_REGISTRATION = '${fn:replace(qualificationModelDTO.imgTaxRegistration, "\\", '/')}';
+    // initData.qualification.BANK_ACCOUNT_LICENCE = '${fn:replace(qualificationModelDTO.imgBankAccountLicence, "\\", '/')}';
+    // initData.qualification.ID_CARD_FRONT = '${fn:replace(qualificationModelDTO.imgIdCardFront, "\\", '/')}';
+    // initData.qualification.ID_CARD_BACK = '${fn:replace(qualificationModelDTO.imgIdCardBack, "\\", '/')}';
+    // initData.qualification.SHOP_PLACE = '${fn:replace(qualificationModelDTO.imgShopPlace, "\\", '/')}';
+    // initData.qualification.SHOP_FRONT = '${fn:replace(qualificationModelDTO.imgShopFront, "\\", '/')}';
+    // initData.qualification.SHOP_CASHIER = '${fn:replace(qualificationModelDTO.imgShopCashier, "\\", '/')}';
+</script>
+<script type="text/javascript" src="jquery-1.8.1.js"></script>
+<script src="lrz.js"></script>
+<script type="text/javascript" src='op_qualification_info_module_chain.js'></script>
+</html>

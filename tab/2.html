@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="1">11111111111111111111111111111</div>
+	<div id="2" style="display: none">22222222222222222222222222222</div>
+	<div id="3" style="display: none">33333333333333333333333333333</div>
+</body>
+<script type="text/javascript" src="../jquery-1.8.1.js">
+</script>
+<script>
+	if(location.hash == "#1"){
+		console.log(location.hash+1)
+		$("#1").show().siblings().hide();
+	}else if(location.hash == "#2"){
+		console.log(location.hash+2)
+		$("#2").show().siblings().hide();
+	}else if(location.hash == "#3"){
+		console.log(location.hash+3)
+		$("#3").show().siblings().hide();
+	}
+
+</script>
+</html>

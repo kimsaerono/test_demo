@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS3 3D立方体多边形动画特效 - 代码笔记</title>
+<style type="text/css">
+*{
+	margin:0 auto;
+	padding:0;
+}
+@keyframes rotate{
+	0%{
+		transform:rotateX(0deg) rotateY(0deg);
+	}
+	100%{
+		transform:rotateX(360deg) rotateY(360deg);
+	}
+}
+
+html{
+	height:100%;
+	background:#E0F0F0;
+}
+.wrap{
+	width: 200px;
+	height: 200px;	
+	margin-top:200px;
+	perspective: 1000px; /* 视图距元素的距离 相当于摄像机 */
+}
+.cube{
+	width:200px;
+	height:200px;
+	position:relative;
+	color:#fff;
+	font-size:36px;
+	text-align:center;
+	line-height:200px;
+	transform-style:preserve-3d; /* 默认flat 2D */
+	transform:rotateX(-30deg) rotateY(-70deg); 
+	animation:rotate 20s infinite linear; /*播放时间 播放次数为循环 缓动效果为匀速 */
+}
+
+.cube > div{
+	width:100%;
+	height:100%;
+	border:1px solid #fff;
+	position:absolute;
+	background:rgba(0,0,0,.5);
+	opacity:.5;
+	transition:transform 0.5s ease-out;
+}
+.cube > div >img{
+	width: 200px;
+	height: 200px;
+}
+.cube .out-front{
+	transform: translateZ(100px);
+}
+.cube .out-back{
+	transform: translateZ(-100px) rotateY(180deg);
+}
+.cube .out-left{
+	transform: translateX(-100px) rotateY(-90deg);
+}
+.cube .out-right{ 
+	transform: translateX(100px) rotateY(90deg);
+}
+.cube .out-top{
+	transform: translateY(-100px) rotateX(90deg);
+}
+.cube .out-bottom{
+	transform: translateY(100px) rotateX(-90deg);
+}
+.cube > span{
+	display:block;
+	width:100px;
+	height:100px;
+	border:1px solid #ffedef;
+	background:rgba(0,0,0,.3);
+	position:absolute;
+	top:50px;
+	left:50px;
+}
+.cube .in-front{
+	transform: translateZ(50px);
+}
+.cube .in-back{
+	transform: translateZ(-50px) rotateY(180deg);
+}
+.cube .in-left{
+	transform: translateX(-50px) rotateY(-90deg);
+}
+.cube .in-right{
+	transform: translateX(50px) rotateY(90deg);
+}
+.cube .in-top{
+	transform: translateY(-50px) rotateX(90deg);
+}
+.cube .in-bottom{
+	transform: translateY(50px) rotateX(-90deg);
+}
+.wrap:hover .out-front{
+	transform: translateZ(200px);
+}
+.wrap:hover .out-back{
+	transform: translateZ(-200px) rotateY(180deg);
+}
+.wrap:hover .out-left{
+	transform: translateX(-200px) rotateY(-90deg);
+}
+.wrap:hover .out-right{
+	transform: translateX(200px) rotateY(90deg);
+}
+.wrap:hover .out-top{
+	transform: translateY(-200px) rotateX(90deg);
+}
+.wrap:hover .out-bottom{
+	transform: translateY(200px) rotateX(-90deg);
+}
+.tip {
+	margin-top: -100px;
+	margin-bottom: 100px;
+	font-size: 24px;
+	font-family: sans-serif;
+	color: #55d0FF
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="tip">
+		Good moring kim
+	</div>
+	<div class="cube cubeX">
+		<div class="out-front"><img src="./img/1.jpg" alt=""></div>
+		<div class="out-back">kim</div>
+		<div class="out-left"><img src="./img/3.jpg" alt=""></div>
+		<div class="out-right"><img src="./img/4.jpg" alt=""></div> 
+		<div class="out-top"><img src="./img/5.jpg" alt=""></div>
+		<div class="out-bottom"><img src="./img/6.jpg" alt=""></div>
+
+		<span class="in-front"></span>
+		<span class="in-back"></span>
+		<span class="in-left"></span>
+		<span class="in-right"></span>
+		<span class="in-top"></span>
+		<span class="in-bottom"></span>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="jquery-1.8.1.js"></script>
+	<script>
+		$(".cube > div").mouseover(function(){
+			$(".cube").css({"animation-play-state":"","animation-duration":"7s"});
+			$(this).css("opacity",1);
+		}).mouseout(function(){
+			$(".cube").css({"animation-play-state":"","animation-duration":"20s"});
+			$(this).css("opacity",.5);
+		})
+	</script>
+</html>

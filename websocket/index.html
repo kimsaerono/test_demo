@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre id="log"></pre>
+</body>
+<script>
+	// 前端接受数据并进行渲染
+  // helper function: log message to screen
+  function log(msg) {
+    document.getElementById('log').textContent += msg + '\n';
+  }
+
+  // setup websocket with callbacks
+  var ws = new WebSocket('ws://localhost:8808/');
+  ws.onopen = function(event) {
+  	console.log(event);
+
+    log('CONNECT');
+  };
+  ws.onclose = function(event) {
+  	console.log(event);
+
+    log('DISCONNECT');
+  };
+  ws.onmessage = function(event) {
+  	console.log(event);
+    log('MESSAGE: ' + event.data);
+  };
+  ws.onerror = function(event){
+  	console.log(event)
+  }
+</script>
+</html>

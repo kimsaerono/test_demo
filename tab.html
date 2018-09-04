@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			padding-top: 0;
+			margin: 0;
+		}
+		body {
+			margin: 100px;
+		}
+		.containerSection {
+			width: 208px;
+			height:240px;
+			float: left;
+			margin-right: 20px;
+		}
+		.containerDiv {
+			width: 168px;
+			height: 198px;
+			background: #FFFFFF;
+			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.20);
+			border-radius: 8px;
+			padding:20px;
+		}
+		.diviceType {
+			vertical-align: bottom;
+			border-bottom: 1px solid #E0E0E0;
+			padding-bottom: 10px;
+		}
+		.mis {
+			width: 168px;
+			height: 100px;
+			line-height: 100px;
+		}
+		.mis img{
+		    display: block;
+    		margin: auto;
+    		margin-top: 21px;
+		}
+
+		.qrcode {
+			height: 395px;
+		    width: 240px;
+		    display: none;
+		    position: absolute;
+		    border: 1px solid #000;
+		    padding-left: 20px;
+		    padding-right: 20px;
+		    padding-top: 20px;
+		    background: #FAFCFE;
+		    border: 1px solid #D5E2E9;
+		    border-radius: 4px;
+		}
+
+		.qrcodeDeviceNo {
+		    -webkit-text-size-adjust: none;
+		    position: relative;
+		    bottom: 109px;
+		    margin-left: 94px;
+		    font-size: 12px;
+		    -webkit-transform-origin-x: 0;
+		    -webkit-transform: scale(0.50);
+		}
+		.preverseQrcode {
+			background: #007BBC;
+			border-radius: 3px;
+			height: 34px;
+			line-height: 34px;
+			width: 120px;
+			text-align: center;
+			font-family: PingFangSC-Light;
+			font-size: 14px;
+			color: #FFFFFF;
+			letter-spacing: 0px;
+			margin: 0 auto;
+		}
+
+		.img_photo {
+			display: none
+		}
+	</style>
+</head>
+<body>
+<div class="box box-info">
+	<c:for>
+		
+	</c:for>
+	<section class="containerSection">
+		<div class="containerDiv">
+			<p class="diviceType">POS</p><!--动态变化-->
+			<div class="mis">
+				<img src="mis的副本.png"><!--动态变化-->
+			</div>
+			<p>设备编号</p>
+			 <p>34567213123123123</p><!--动态变化 -->
+		</div>
+	</section>
+	<section class="containerSection">
+		<div class="containerDiv">
+			<p class="diviceType">POS</p><!--动态变化-->
+			<div class="mis">
+				<img src="mis的副本.png"><!--动态变化-->
+			</div>
+			<p>设备编号</p>
+			<p>345612312312317</p><!--动态变化 -->
+		</div>
+	</section>
+	<section class="containerSection">
+		<div class="containerDiv">
+			<p class="diviceType">MIS</p><!--动态变化-->
+			<div class="mis">
+				<img src="mis的副本.png"><!--动态变化-->
+			</div>
+			<p>设备编号</p>
+			<p>345123123123123167</p><!--动态变化 -->
+		</div>
+	</section>
+
+</div>
+<!-- 图片合成 -->
+	<div align="center" class="img_photo">
+	    <img id="img1" src="desk.png">
+
+	    <div style="text-align: center;display: none" id="qrPic"></div>
+	    <input type="hidden" id="codeUrl" name="codeUrl" value="jebchjebch" />
+	    <img src="" id="img2"/>
+	    <!-- <img id="img2" src="2.jpg" width="300"> -->
+	</div>
+
+<!-- 二维码下载框 -->
+	<div class="qrcode">
+		<canvas id="canvasFinal" width="240" height="320" align="center"></canvas>
+		<!-- <canvas ></canvas> -->
+		<div class="qrcodeDeviceNo">(ccb111111111111111)</div>
+		<div class="preverseQrcode">保存下载</div>
+	</div>
+	<input id="input1" type="radio" name="">
+<script type="text/javascript" src="jquery-1.8.1.js"></script>
+<script src="jquery.qCode.min.js"></script>
+<script type="text/javascript">
+    function toUtf8(str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for (i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            } else {
+                out += String.fromCcodeharCode(0xC0 | ((c >> 6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            }
+        }
+        return out;
+    };
+
+    //生成二维码代码
+    function qr() {
+        $("#qrPic").empty();
+        var str = toUtf8($("#codeUrl").val());//接受后端传来的数据
+        $("#qrPic").qrcode({
+            render: "canvas",
+            width: 270,
+            height: 270,
+            text: str
+        });
+
+        $("canvas").eq(0).attr("id", "erw");
+        var canvas = document.getElementById('erw');
+        var context = canvas.getContext('2d');
+        var strDataURI = canvas.toDataURL();
+        document.getElementById('img2').src = strDataURI;
+        console.log(strDataURI);//可以得到url
+    };
+
+	$(".containerSection").each(function(){
+		$(this).mousemove(draw);
+	});
+	$(".containerSection").each(function(){
+		$(this).mouseleave(function(){
+			$(".qrcode").css("display","none");
+		});
+		$(".qrcode").mouseleave(function(){
+			$(".qrcode").css("display","none");
+		})
+	});
+	$(".qrcode").mousemove(function(){
+		$(this).css("display","block");
+	});
+	$(".qrcode").mouseout(function(){
+
+		$(document).mousedown(function(e){ 
+			e = window.event || e; // 兼容IE7
+			obj = $(e.target);
+			console.log(obj[0].id)
+			if(obj[0].id == "canvasFinal"){
+				$(this).css("display","none");
+				console.log(typeof obj[0].id);
+			};
+		});
+	});
+	function draw(fn){
+        qr();
+		var qrcodeTop =  parseFloat($(this)[0].offsetTop);
+		var qrcodeLeft = parseFloat($(this)[0].offsetLeft);
+		$(".qrcode").css("display","block");
+		$(".qrcode").css("top",qrcodeTop+170+"px");
+		$(".qrcode").css("left",qrcodeLeft+70+"px");
+
+	    var data1= new Array();
+	    for(var i=0;i<$('.img_photo img').length;i++){
+	        data1[i]=$('.img_photo img').eq(i).attr('src');
+	    }
+	    var c=document.getElementById('canvasFinal'),
+			ctx=c.getContext('2d'),
+	        len=data1.length;
+
+	    ctx.rect(0,0,300,300);
+	    ctx.fillStyle='transparent';//画布填充颜色
+	    ctx.fill();
+	    var img=new Image;
+	    // img.setAttribute('crossOrigin', 'anonymous');
+	    img.src=data1[0];
+	    img.onload=function(){
+	        ctx.drawImage($("#img1")[0],0,0,240,320);
+	    }
+	    var img=new Image;
+	    // img.setAttribute('crossOrigin', 'anonymous');
+
+	    img.src=data1[1];
+	    	{
+	        ctx.drawImage($("#img2")[0],68,88,105,105);
+	    }
+	    //保存生成作品图片
+	}
+
+
+	$(".preverseQrcode").click(function(){
+		console.log(11)
+	})
+
+	//有跨域问题
+	setTimeout(function(){
+		var canvas = document.getElementById('canvasFinal');
+		console.log(canvas);
+		var a = canvas.toDataURL();
+		console.log(a);
+	},1000)
+
+	console.log($("#input1").attr("checked"))
+
+	console.log($("#input1").prop("checked"))
+</script>
+</body>
+</html>
