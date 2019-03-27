@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+        }
+        .code   {
+            display: block;
+            width:0;
+            height:0;
+            font-size:14px;
+            letter-spacing: 30px;
+            color:red;
+            border:0;
+            outline: 0;
+            overflow: hidden;
+            color: transparent;
+        }
+        .codeLabel {
+            border:0;
+            outline: 0;
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            height: 18px;
+            width:18px;
+            left: 0;
+            bottom: 0;
+        }
+        .pink {
+            border-bottom-color:pink;
+        }
+
+        .layui-layer-content div p {
+            width: 60%;
+            display: inline-block;
+            vertical-align: top;
+            min-height: 25px;
+            border-left:1px solid #000;
+        }
+        .layui-layer-content div p:nth-of-type(1){
+            width:40%;
+            border-left:0;
+        }
+        #sureMerchantNo .layui-bar-content {
+            border-bottom: 1px solid #000;
+        }
+       
+
+        .layui-bar-content p {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div style="position:relative">
+        <input type="text" id="codeInput" class="code" maxlength="6" name="codeInput">
+        <label class="codeLabel" for="codeInput"></label>
+        <label class="codeLabel" for="codeInput" style="left:3%;"></label>
+        <label class="codeLabel" for="codeInput" style="left:6%;"></label>
+        <label class="codeLabel" for="codeInput" style="left:9%;"></label>
+        <label class="codeLabel" for="codeInput" style="left:12%;"></label>
+        <label class="codeLabel" for="codeInput" style="left:15%;"></label>
+
+    </div>
+</body>
+<script type="text/javascript" src = "../jquery-1.8.1.js"></script>
+
+<script>
+    function verificationCode(value){
+        $(".code").on("keyup",function(){
+            var $code = $(".code").val();
+            var $length = $(".code").val().length;
+            for(var i = 0; i < $length ; i ++ ){
+                var $value = $code.split("")[i] || "";
+                $(".codeLabel").eq(i).addClass("pink");
+                $(".codeLabel").eq(i).text($value);
+            };
+            if(i == value){
+                $(".codeLabel").eq(value).removeClass("pink");
+                $(".codeLabel").eq(value).text("");
+            };
+            for(var i = value; i > $length ; i -- ){
+                $(".codeLabel").eq(i-1).removeClass("pink");
+                $(".codeLabel").eq(i-1).text("");
+            };
+        });
+    }
+    verificationCode(5)
+</script>
+</html>

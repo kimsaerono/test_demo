@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table, td, th{
+		    border:1px solid #ebebeb;
+		    border-collapse:collapse;
+		    text-align: center;
+		}
+		table {
+			width:500px;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div class="app">
+		<table>
+			<thead>
+				<tr>
+					<th style="line-height: 38px">选中数
+						{{checkedCount}}<input type="checkbox" v-model="allchecked" style="zoom:200%;vertical-align: middle">
+					</th>
+					<th>name</th>
+					<th>age</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in list">
+					<td><input type="checkbox" v-model="item.checked" style="zoom:200%"></td>
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		var list=[
+			{
+				name:'小明',
+				age: 23,
+				checked: false
+			},
+			{
+				name:'小红',
+				age: 2,
+				checked: true
+			},
+			{
+				name:'小蓝',
+				age: 23,
+				checked: true
+			},
+			{
+				name:'小bai',
+				age: 40,
+				checked: true
+			},
+			{
+				name:'王小二',
+				age: 18,
+				checked: false
+			}
+		]
+		new Vue({
+			el: '.app',
+			data: {
+				list
+			},
+			computed: {
+              allchecked: {
+                // getter
+                get: function () {
+                  return this.list.length == this.checkedCount
+                },
+                // setter
+                set: function (val) {
+                	//val就是点击之后，全选按钮的v-model值（状态）,勾上后就是val的值就是true。未勾上就是false
+                    this.list.forEach(item => {
+	                  item.checked = val
+	                })
+                }
+              },
+              checkedCount: {
+                // getter
+                get: function () {
+                  var i = 0
+                  this.list.forEach(item => {
+                  	if (item.checked === true) i++                  	
+                  }) 
+                  return i
+                }
+              }
+            }
+		})
+	</script>
+</body>
+</html>

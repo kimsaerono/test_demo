@@ -1,4 +1,3 @@
-
 // 为jsonp模拟的数据
 flightHandler([{
     "code": "CA1998",
